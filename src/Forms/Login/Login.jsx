@@ -1,9 +1,10 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { maxLengthCreator, required } from '../../utils/validators/validator'
-import { Input } from '../../controls/FormsControls/FormsControls'
+import { Element } from '../../controls/FormsControls/FormsControls'
 
 // const maxLength10 = maxLengthCreator(10)
+const Input = Element('input')
 
 const LoginForm = (props) => {
    return (
@@ -29,7 +30,7 @@ const LoginForm = (props) => {
                name={'RememberMe'} 
                component={Input} 
                type="checkbox"
-            /> Remember me!
+            /> Remember me
          </div>
          <div>
             <button>Login</button>

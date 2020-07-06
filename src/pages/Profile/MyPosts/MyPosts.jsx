@@ -4,9 +4,10 @@ import { Field, reduxForm } from 'redux-form'
 import Post from './Post.jsx'
 import style from './MyPosts.module.css'
 import { required, maxLengthCreator } from '../../../utils/validators/validator.js'
-import { Textarea } from '../../../controls/FormsControls/FormsControls.js'
+import { Element } from '../../../controls/FormsControls/FormsControls.js'
 
 const maxLength10 =  maxLengthCreator(10)
+const Textarea = Element('textarea')
 
 const AddPostForm = (props) => {
    return (

@@ -4,10 +4,11 @@ import style from './Dialogs.module.css'
 import Message from './Message/Message.jsx'
 import { Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
-import { Textarea } from '../../controls/FormsControls/FormsControls.js'
+import { Element } from '../../controls/FormsControls/FormsControls.js'
 import { required, maxLengthCreator } from '../../utils/validators/validator.js'
 
 const maxLength100 = maxLengthCreator(100)
+const Textarea = Element('textarea')
 
 const AddMessageForm = (props) => {
    return (
