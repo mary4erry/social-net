@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  
+}
+.appWrapper {
+  display: grid;
+  grid-template-areas: 
+  /* "header header" */
+  "nav cont";
+  /* grid-template-rows: 60px 1fr; */
+  grid-template-columns: 2fr 10fr;
+  /* width: 90%; */
+  margin: 0 auto;
+}
+
+.app_wrapper_content {
+  grid-area: cont;
+  background-color: rgba(221, 220, 220, 0.397);
+  margin: 10px;
+  border-radius: 20px;
+}
