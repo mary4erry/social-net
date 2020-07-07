@@ -13,6 +13,15 @@
   align-items: center;
   margin-right: 30px;
 }
+.userName{
+  margin-top: 10px;
+  font-size: 20px;
+}
+.loginBlock button{
+  float: right;
+  align-items: center;
+  margin-top: 5px;
+}
 .loginBlock a {
   text-decoration: none;
   color: aliceblue;
