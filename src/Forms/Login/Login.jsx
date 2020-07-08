@@ -5,6 +5,7 @@ import { Element } from '../../controls/FormsControls/FormsControls'
 import { connect } from 'react-redux'
 import { login } from '../../redux/reducers/auth.reducer'
 import { Redirect } from 'react-router-dom'
+import style from '../../controls/FormsControls/FormsControls.module.css'
 
 // const maxLength10 = maxLengthCreator(10)
 const Input = Element('input')
@@ -35,6 +36,9 @@ const LoginForm = (props) => {
                type="checkbox"
             /> Remember me
          </div>
+         { props.error && <div className={style.formSummaryError}>
+            {props.error}
+         </div>}
          <div>
             <button>Login</button>
          </div>
