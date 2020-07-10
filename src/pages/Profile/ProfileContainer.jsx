@@ -5,7 +5,6 @@ import {getUserProfile, getStatus, updateStatus} from '../../redux/reducers/prof
 import { withRouter } from 'react-router-dom'
 import { WithAuthRedirect } from '../../HOC/WithAuthRedirect.js'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
 
 class ProfileContainer extends React.Component {
    componentDidMount () {
@@ -20,7 +19,6 @@ class ProfileContainer extends React.Component {
       this.props.getStatus(userId)
    }
    render () {
-      // if (!this.props.isAuth) return <Redirect to={'/login'}/>
 
       return (
          <div>
