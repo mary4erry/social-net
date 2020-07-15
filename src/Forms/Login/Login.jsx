@@ -1,11 +1,12 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { required } from '../../utils/validators/validator'
 import { Element, createField } from '../../controls/FormsControls/FormsControls'
 import { connect } from 'react-redux'
 import { login } from '../../redux/reducers/auth.reducer'
 import { Redirect } from 'react-router-dom'
 import style from '../../controls/FormsControls/FormsControls.module.css'
+import styles from './Login.module.css'
 
 // const maxLength10 = maxLengthCreator(10)
 const Input = Element('input')
@@ -36,8 +37,8 @@ const Login = (props) => {
       return <Redirect to={'/profile'}/>
    }
    
-   return <div>
-      <h1>LOGIN</h1>
+   return <div className={styles.formBlock} >
+      <h1 className={styles.formH1} >LOGIN</h1>
       <LoginReduxForm onSubmit={onSubmit} />
    </div>
 }
