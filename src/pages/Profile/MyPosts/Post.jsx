@@ -3,7 +3,7 @@ import React from 'react'
 
 import style from './Post.module.css'
 
-const Post = (props) => {
+const Post = ({message, likesCount}) => {
    return (
       <div className={style.item}>
          <img
@@ -12,9 +12,9 @@ const Post = (props) => {
             alt=""
          />
          <div className={style.item_body}>
-            <div>{props.message}</div>
+            <div>{message}</div>
          <div>
-            <span>likes {props.likesCount}</span>
+            <span>likes {likesCount}</span>
          </div>
          </div>
          

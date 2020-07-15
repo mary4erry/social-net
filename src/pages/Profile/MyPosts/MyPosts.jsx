@@ -9,9 +9,9 @@ import { Element } from '../../../controls/FormsControls/FormsControls.js'
 const maxLength10 =  maxLengthCreator(10)
 const Textarea = Element('textarea')
 
-const AddPostForm = (props) => {
+const AddPostForm = ({handleSubmit}) => {
    return (
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={handleSubmit}>
          <div>
             <Field
                component={Textarea}

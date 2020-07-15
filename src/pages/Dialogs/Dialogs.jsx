@@ -29,8 +29,8 @@ const AddMessageForm = (props) => {
 
 const AddMessageReduxForm = reduxForm({ form: 'dialogAddMessageForm' })(AddMessageForm)
 
-const Dialogs = (props) => {
-   let state = props.dialogsPage
+const Dialogs = ({ dialogsPage, sendMessage, isAuth}) => {
+   let state = dialogsPage
 
    let dialogsElements = state.dialogs.map(dialog => 
       <DialogItem 
@@ -47,10 +47,10 @@ const Dialogs = (props) => {
    )            
 
    const addNewMessage = (data) => {
-      props.sendMessage(data.newMsgText);
+      sendMessage(data.newMsgText);
    }
 
-   if (!props.isAuth) return <Redirect to={'/login'}/>
+   if (!isAuth) return <Redirect to={'/login'}/>
    
    return (
       <div className={style.dialogs}>

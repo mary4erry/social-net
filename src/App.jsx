@@ -48,7 +48,8 @@ class App extends Component {
                      <Route path="/settings" component={Profile} /> */}
                   </div>
                </div>
-            </div> )  
+            </div> 
+         )  
       )
    }
 }

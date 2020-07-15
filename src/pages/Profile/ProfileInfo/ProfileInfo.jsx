@@ -5,8 +5,8 @@ import style from './ProfileInfo.module.css'
 import Loader from '../../../controls/Loader/Loader'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 
-const ProfileInfo = (props) => {
-   if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+   if (!profile) {
       return <Loader />
    }
    
@@ -19,23 +19,23 @@ const ProfileInfo = (props) => {
             />
          </div> */}
          <div className={style.description}>
-            <img className={style.ava_big} src={props.profile.photos.large} alt=""/>
+            <img className={style.ava_big} src={profile.photos.large} alt=""/>
             
             <ProfileStatusWithHooks 
-               status={props.status}
-               updateStatus={props.updateStatus} />
-            <div> {props.profile.fullName} </div>
-            {props.profile.aboutMe 
-               && <div> О себе: {props.profile.aboutMe} </div>}
+               status={status}
+               updateStatus={updateStatus} />
+            <div> {profile.fullName} </div>
+            {profile.aboutMe 
+               && <div> О себе: {profile.aboutMe} </div>}
             
-            {props.profile.lookingForAJob 
-               && <div> Рассмотрю предложения о работе: {props.profile.lookingForAJobDescription}</div>}
+            {profile.lookingForAJob 
+               && <div> Рассмотрю предложения о работе: {profile.lookingForAJobDescription}</div>}
             <div>
                Contacts: 
-               {/* {props.profile.contacts.map( c => 
+               {/* {profile.contacts.map( c => 
                   <span>{c}</span>
                )} */}
-               {/* {props.profile.contacts.github} */}
+               {/* {profile.contacts.github} */}
             </div>
          </div>
       </div>

@@ -1,7 +1,9 @@
 .header {
-  grid-area: header;
   background-color: rgb(144, 214, 216);
   /* border-radius: 20px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
  }
 .header img {
@@ -9,21 +11,19 @@
   width: 50px;
 }
 .loginBlock {
-  float: right;
-  align-items: center;
   margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .userName{
-  margin-top: 10px;
   font-size: 20px;
-}
-.loginBlock button{
-  float: right;
-  align-items: center;
-  margin-top: 5px;
 }
 .loginBlock a {
   text-decoration: none;
   color: aliceblue;
   line-height: 60px;
+}
+.logoutBtn {
+  padding: 3px;
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import style from './Message.module.css'
 
-const Message = (props) => {
+const Message = ({text}) => {
    return <div 
       className={style.message}
-   >{props.text}</div>
+   >{text}</div>
 }
 
 export default Message

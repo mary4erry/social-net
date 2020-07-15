@@ -4,7 +4,7 @@ import Pagination from '../../controls/FormsControls/Pagination/Pagination.jsx'
 import User from './User.jsx'
 
 
-const Users = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, ...props}) => {
+const Users = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, followingInProgress, unfollow, follow}) => {
    return (
       <div className={style.wrap}>
          <Pagination currentPage={currentPage} 
@@ -17,9 +17,9 @@ const Users = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, ..
                <User 
                   user={u} 
                   key={ u.id }
-                  followingInProgress={ props.followingInProgress}
-                  unfollow={ props.unfollow}
-                  follow={ props.follow}
+                  followingInProgress={followingInProgress}
+                  unfollow={unfollow}
+                  follow={follow}
                />  
             )}
       </div>
