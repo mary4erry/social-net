@@ -11,13 +11,13 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged}) => 
    const portionSize = 10
 
    const portionCount = Math.ceil(pagesCount / portionSize)
-   const [portionNumber, SetPortionNumber] = useState(1)
-   const leftPortionNumber = (portionNumber - 1) * portionSize + 1
+   const [ portionNumber, SetPortionNumber ] = useState(1)
+   const leftPortionNumber = (portionNumber - 1) * portionSize
    const rigntPortionNumber = portionNumber * portionSize
 
    return <div className={style.pages}>
             { portionNumber > 1 &&
-            <button onClick={ () => {SetPortionNumber(portionNumber- 1) }}>PREV</button>}
+            <button className={style.button} onClick={ () => {SetPortionNumber(portionNumber- 1) }}>PREV</button>}
             { pages
                .filter( p => p > leftPortionNumber && p < rigntPortionNumber )
                .map( p => 
@@ -28,7 +28,7 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged}) => 
                </span>
             )}
             { portionCount > portionNumber &&
-               <button onClick={ () => { SetPortionNumber(portionNumber + 1) }}>NEXT</button>}
+               <button className={style.button} onClick={ () => { SetPortionNumber(portionNumber + 1) }}>NEXT</button>}
          </div>
 }
 
