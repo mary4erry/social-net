@@ -7,7 +7,7 @@ import { follow, unfollow,
          toggleFollowingProgress, 
          requestUsers} from '../../redux/reducers/users.reducer'
 import { compose } from 'redux'
-import { getPageSize, getUsers, getTotalUsersCount, getCurrentPage, getIsLoading, getFollowingInProgress } from '../../redux/selectors/users-selector.js'
+import { getPageSize, getUsers, getTotalItemsCount, getCurrentPage, getIsLoading, getFollowingInProgress } from '../../redux/selectors/users-selector.js'
 
 class UsersContainer extends React.Component {
    componentDidMount () {
@@ -28,7 +28,7 @@ class UsersContainer extends React.Component {
             {this.props.isLoading ? <Loader /> : null}
             <Users 
                currentPage= {this.props.currentPage}
-               totalUsersCount= {this.props.totalUsersCount}
+               totalItemsCount= {this.props.totalItemsCount}
                pageSize= {this.props.pageSize}
                onPageChanged= {this.onPageChanged}
                users= {this.props.users}
@@ -45,7 +45,7 @@ let mapStateToProps = (state) => {
    return {
       users: getUsers(state),
       pageSize: getPageSize(state),
-      totalUsersCount: getTotalUsersCount(state),
+      totalItemsCount: getTotalItemsCount(state),
       currentPage: getCurrentPage(state),
       isLoading: getIsLoading(state),
       followingInProgress: getFollowingInProgress(state),

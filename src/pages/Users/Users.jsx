@@ -4,12 +4,12 @@ import Pagination from '../../controls/FormsControls/Pagination/Pagination.jsx'
 import User from './User.jsx'
 
 
-const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
+const Users = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, ...props}) => {
    return (
       <div className={style.wrap}>
          <Pagination currentPage={currentPage} 
             onPageChanged={onPageChanged}
-            totalUsersCount={totalUsersCount}
+            totalItemsCount={totalItemsCount}
             pageSize={pageSize}
             />
          
