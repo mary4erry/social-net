@@ -1,35 +1,27 @@
 import React from 'react'
 import styles from './FormsControls.module.css'
+import { Field } from 'redux-form'
 
-export const Element =  Element => ({input, meta, ...props}) => {
-   const isError = meta.touched && meta.error
+export const Element =  Element => ({input, meta: {touched, error}, ...props}) => {
+   const isError = touched && error
    return (
       <div className={styles.formControl + ' ' + (isError && styles.error)}>
          <div>
             <Element {...input} {...props}/>
          </div>
-         {isError && <span>{meta.error}</span>}
+         {isError && <span>{error}</span>}
       </div>
    )
 }
 
-// export const FormControl = ({input, meta, ...props}) => {
-//    const isError = meta.touched && meta.error
-//    return (
-//       <div className={styles.formControl + ' ' + (isError && styles.error)}>
-//          <div>
-//             {props.children}
-//          </div>
-//          {isError && <span>{meta.error}</span>}
-//       </div>
-//    )
-// }
-
-// export const Textarea = (props) => {
-//    const {input, meta, children, ...restProps} = props
-//    return <FormControl {...props}> <textarea {...input} {...restProps} /> </FormControl>
-// }
-// export const Input = (props) => {
-//    const {input, meta, children, ...restProps} = props
-//    return <FormControl {...props}> <input {...input} {...restProps} /> </FormControl>
-// }
+export const createField = (placeholder, name, component, validate, props={}, text= ' ') => (
+   <div>
+      <Field 
+      placeholder={placeholder} 
+      name={name} 
+      component={component} 
+      validate={validate}
+      {...props}/> 
+      {text}
+   </div>
+)

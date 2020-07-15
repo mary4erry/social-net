@@ -1,0 +1,16 @@
+
+.pages {
+   margin-bottom: 20px;
+   font-size: 18px;
+}
+.selectedPage {
+   font-weight: bold;
+}
+.pageNum {
+   color: rgba(0, 0, 0, 0.5);
+   margin: 2px;
+   cursor: pointer;
+}
+.pageNum:hover {
+   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
