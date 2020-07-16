@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
-
-// components
-import Navbar from './components/Navbar/Navbar.jsx'
-import DialogsContainer from './pages/Dialogs/DialogsContainer'
-import UsersContainer from './pages/Users/UsersContainer.jsx'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import {initializeApp} from './redux/reducers/app.reducer'
 
 import style from './App.module.css'
-import ProfileContainer from './pages/Profile/ProfileContainer.jsx'
+
+import Navbar from './components/Navbar/Navbar.jsx'
+import UsersContainer from './pages/Users/UsersContainer.jsx'
 import HeaderContainer from './components/Header/HeaderContainer.jsx'
 import LoginPage from './Forms/Login/Login.jsx'
-import { connect } from 'react-redux'
-import {initializeApp} from './redux/reducers/app.reducer'
-import { compose } from 'redux'
 import Loader from './controls/Loader/Loader.jsx'
-
+import { WithSuspense } from './HOC/WithSuspense'
+// import ProfileContainer from './pages/Profile/ProfileContainer.jsx'
+// import DialogsContainer from './pages/Dialogs/DialogsContainer'
+const DialogsContainer = React.lazy(() => import('./pages/Dialogs/DialogsContainer.jsx'))
+const ProfileContainer = React.lazy(() => import('./pages/Profile/ProfileContainer.jsx'))
 
 class App extends Component {
    componentDidMount() {
@@ -32,10 +33,12 @@ class App extends Component {
                   <div className={style.app_wrapper_content}>
 
                      <Route path="/dialogs" 
-                        render={() => <DialogsContainer />}
+                        render={ WithSuspense( DialogsContainer )
+                     }
                      />
                      <Route path="/profile/:userId?" 
-                        render={() => <ProfileContainer />}
+                        render={ WithSuspense( ProfileContainer )
+                     }
                      />
                      <Route path="/users"
                         render={() => <UsersContainer /> }
