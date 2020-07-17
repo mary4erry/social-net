@@ -12,8 +12,6 @@ import HeaderContainer from './components/Header/HeaderContainer.jsx'
 import LoginPage from './Forms/Login/Login.jsx'
 import Loader from './controls/Loader/Loader.jsx'
 import { WithSuspense } from './HOC/WithSuspense'
-// import ProfileContainer from './pages/Profile/ProfileContainer.jsx'
-// import DialogsContainer from './pages/Dialogs/DialogsContainer'
 const DialogsContainer = React.lazy(() => import('./pages/Dialogs/DialogsContainer.jsx'))
 const ProfileContainer = React.lazy(() => import('./pages/Profile/ProfileContainer.jsx'))
 
