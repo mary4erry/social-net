@@ -31,7 +31,7 @@ export const toggleIsLoading = (isLoading) =>  ({type: 'TOGGLE_IS_LOADING', isLo
 export const getAuthUserData = () => async (dispatch) => {
    let response = await authAPI.me()
    if (response.data.resultCode === 0) {
-      let {id, login, email} = response.data.data
+      let {id, email, login} = response.data.data
       dispatch(setAuthUserData(id, email, login, true))
    }
 }
