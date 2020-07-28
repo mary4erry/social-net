@@ -2,25 +2,13 @@ import React, { useState } from 'react'
 // import ReactDom from 'react-dom'
 
 import style from './ProfileInfo.module.css'
-import profilePhoto from '../../../assets/userpic.png'
+import ProfilePhoto from '../../../assets/userpic.png'
 import Loader from '../../../controls/Loader/Loader'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import ProfileDataForm from './ProfileDataForm.jsx'
 
-const ProfileInfo = ({handleSubmit,profile, status, updateStatus, isOwner, savePhoto}) => {
+const ProfileInfo = ({ saveProfile, profile, status, updateStatus, isOwner, savePhoto }) => {
    let [editMode, setEditMode] = useState(false)
-
-   // useEffect( () => { //вызывается после отрисовки
-   //    setStatus(status)
-   // }, [status]) //зависимость
-
-   // const activateEditMode = () => {
-   //    setEditMode(true)
-   // }
-   // const deactivateEditMode = () => {
-   //    setEditMode(false)
-   //    updateStatus(status);
-   // };
 
    if (!profile) {
       return <Loader />
@@ -30,7 +18,13 @@ const ProfileInfo = ({handleSubmit,profile, status, updateStatus, isOwner, saveP
          savePhoto(e.target.files[0])
       }
    }
-   // const editMode = isOwner
+   const onSubmit = (formData) => {
+      saveProfile(formData).then(
+         () => {
+             setEditMode(false)
+         }
+      )
+   }
    return (
       <div className={style.profileInfo}>
          {/* <div className={style.bgPhoto}>
@@ -40,7 +34,7 @@ const ProfileInfo = ({handleSubmit,profile, status, updateStatus, isOwner, saveP
             />
          </div> */}
          <div className={style.profilePhotoBlock}>
-            <img className={style.ava_big} src={profile.photos.large || profilePhoto } alt=""/>
+            <img className={style.ava_big} src={profile.photos.large || ProfilePhoto } alt=""/>
             {isOwner && 
                <div>
                   <input type={'file'}
@@ -52,15 +46,16 @@ const ProfileInfo = ({handleSubmit,profile, status, updateStatus, isOwner, saveP
             updateStatus={updateStatus} />
          {editMode 
             ? <ProfileDataForm profile={profile}
+               initialValues={profile}
                isOwner={isOwner}
-               handleSubmit={handleSubmit}
-               // activateEditMode={activateEditMode}
+               onSubmit={onSubmit}
                /> 
             : <ProfileData profile={profile}
                isOwner={isOwner}
                status={status}
                updateStatus={updateStatus}
-               activateEditMode={() => {setEditMode(true)}}/>
+               activateEditMode={() => {setEditMode(true)}}
+               />
          }
       </div>
    )
@@ -72,8 +67,7 @@ const ProfileData = ({profile, status, updateStatus, isOwner, activateEditMode})
          
          {isOwner && <div><button onClick={activateEditMode}>Edit profile info</button></div>}
          <b>{profile.fullName}</b>
-         {profile.aboutMe 
-            && <div> <b>About me </b> {profile.aboutMe} </div>}
+         <div> <b>About me: </b> {profile.aboutMe} </div>
          {profile.lookingForAJob 
             && <div> <b>Looking for a job: </b> {profile.lookingForAJobDescription} </div>}
          <div>

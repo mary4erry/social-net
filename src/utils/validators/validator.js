@@ -1,8 +1,10 @@
 export const required = value => {
    if (value) return undefined
-
-   return 'Field is required'
-   
+   return 'Field is required'  
+}
+export const notRequired = value => {
+   if (value) return undefined
+   return 'Field is required'  
 }
 
 
